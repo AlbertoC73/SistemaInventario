@@ -35,9 +35,9 @@ namespace SistemaInventario.AccesoDatos.Migrations
                         principalTable: "Categorias",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Productos_Marca_MarcaId",
+                        name: "FK_Productos_Marcas_MarcaId",
                         column: x => x.MarcaId,
-                        principalTable: "Marca",
+                        principalTable: "Marcas",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Productos_Productos_PadreId",

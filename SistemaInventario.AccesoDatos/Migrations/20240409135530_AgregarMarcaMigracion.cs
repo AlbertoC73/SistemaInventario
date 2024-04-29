@@ -11,7 +11,7 @@ namespace SistemaInventario.AccesoDatos.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Marca",
+                name: "Marcas",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,7 +22,7 @@ namespace SistemaInventario.AccesoDatos.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Marca", x => x.Id);
+                    table.PrimaryKey("PK_Marcas", x => x.Id);
                 });
         }
 
@@ -30,7 +30,7 @@ namespace SistemaInventario.AccesoDatos.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Marca");
+                name: "Marcas");
         }
     }
 }

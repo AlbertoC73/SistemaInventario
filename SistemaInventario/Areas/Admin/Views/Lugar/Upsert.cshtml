@@ -1,0 +1,70 @@
+﻿@model SistemaInventario.Modelos.Lugar
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var titulo = "Crear Area";
+}
+
+<!--Creamos el Formulario de envio de Información-->
+<form method="post">
+    <div style="padding-left:15%; padding-right:15%; padding-bottom:inherit.4rem;">
+        <div class="row border-0">
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+            </div>
+        </div>
+        <!--Cambio de Titulo de la Página-->
+        @if(Model.Id != 0)
+        {
+            //Actualizar
+            titulo = "Actualizar Area";
+            <input type="hidden" asp-for="Id" id="id"/>
+        }
+        <!--Mostramos el Titulo de la página-->
+        <div class="col-12 border-bottom p-0">
+            <h2 class="text-primary">@titulo</h2>
+        </div>
+        <!--Campo descripcion-->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Descripción</label>
+                <input type="text" asp-for="Descripcion" class="form-control" placeholder="Descripción de la Area" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <!--Campo turno-->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Turno</label>
+                <select asp-for="Turno" class="form-select">
+                    <option>Matutino</option>
+                    <option>Vespertino</option>
+                    <option>Nocturno</option>
+                </select>
+                <span asp-validation-for="Turno" class="text-danger"></span>
+            </div>
+        </div>
+        <!--Campo Estado-->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Estado</label>
+                <select asp-for="Estado" class="form-select">
+                    <option value=true>Activo</option>
+                    <option value=false>Inactivo</option>
+                </select>
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+        </div>
+        <!--Precentamos las Vistas parciales-->
+        <br />
+        <div>
+            @if(Model.Id !=0)
+            {
+                <partial name="_BotonesActualizarYRegresar" model="Model.Id" />
+            }
+            else
+            {
+                <partial name="_BotonesCrearYRegresar" />
+            }
+        </div>
+    </div>
+</form>

@@ -9,22 +9,22 @@ using System.Threading.Tasks;
 
 namespace SistemaInventario.AccesoDatos.Repositorio
 {
-    public class MarcaRepositorio : Repositorio<Marca>, IMarcaRepositorio
+    public class LugarRepositorio : Repositorio<Lugar>, ILugarRepositorio
     {
         private readonly ApplicationDbContext _db;
 
-        public MarcaRepositorio(ApplicationDbContext db) : base(db)
+        public LugarRepositorio(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
-        public void Actualizar(Marca marca)
+        public void Actualizar(Lugar lugar)
         {
-            var marcaBD = _db.Marcas.FirstOrDefault(b => b.Id == marca.Id);
-            if (marcaBD != null)
+            var lugarBD = _db.Lugares.FirstOrDefault(b => b.Id == lugar.Id);
+            if (lugarBD != null)
             {
-                marcaBD.Nombre = marca.Nombre;
-                marcaBD.Descripcion = marca.Descripcion;
-                marcaBD.Estado = marca.Estado;
+                lugarBD.Descripcion = lugar.Descripcion;
+                lugarBD.Turno = lugar.Turno;
+                lugarBD.Estado = lugar.Estado;
                 _db.SaveChanges();
             }
         }

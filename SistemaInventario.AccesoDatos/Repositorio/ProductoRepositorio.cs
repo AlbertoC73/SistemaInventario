@@ -53,7 +53,7 @@ namespace SistemaInventario.AccesoDatos.Repositorio
             }
             if (obj == "Marca")
             {
-                return _db.Marca.Where(c => c.Estado == true).Select(c => new SelectListItem
+                return _db.Marcas.Where(c => c.Estado == true).Select(c => new SelectListItem
                 {
                     Text = c.Nombre,
                     Value = c.Id.ToString()

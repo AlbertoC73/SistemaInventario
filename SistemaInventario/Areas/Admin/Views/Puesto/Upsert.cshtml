@@ -1,0 +1,91 @@
+﻿@model SistemaInventario.Modelos.Puesto
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var titulo = "Crear Puesto";
+}
+
+<form method="post">
+    <div style="padding-left:15%; padding-right:15%; padding-bottom:inherit.4rem;">
+        <div class="row border-0">
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+            </div>
+        </div>
+
+        @if (Model.Id != 0)
+        {
+            titulo = "Actualizar Puesto";
+            <input type="hidden" asp-for="Id" id="id" />
+        }
+
+        <div class="col-12 border-bottom p-0">
+            <h2 class="text-primary">@titulo</h2>
+        </div>
+
+        <!-- Campo Nombre del Puesto -->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Nombre del Puesto</label>
+                <input type="text" asp-for="NombreDelPuesto" class="form-control" placeholder="Nombre del Puesto" />
+                <span asp-validation-for="NombreDelPuesto" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <!-- Campo Tipo Puesto -->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Tipo de Puesto</label>
+                <select asp-for="TipoPuesto" class="form-select">
+                    <option>Administrativo</option>
+                    <option>Directivo</option>
+                    <option>Operativo</option>
+
+                </select>
+                <span asp-validation-for="TipoPuesto" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Campo Salario -->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Salario</label>
+                <input type="text" asp-for="Salario" class="form-control" placeholder="Salario" />
+                <span asp-validation-for="Salario" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Campo Horario -->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Horario</label>
+                <input type="text" asp-for="Horario" class="form-control" placeholder="Horario" />
+                <span asp-validation-for="Horario" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Campo Estado -->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Estado</label>
+                <select asp-for="Estado" class="form-select">
+                    <option value="True">Activo</option>
+                    <option value="False">Inactivo</option>
+                </select>
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Presentamos las Vistas Parciales -->
+        <br />
+        <div>
+            @if (Model.Id != 0)
+            {
+                <partial name="_BotonesActualizarYRegresar" model="Model.Id" />
+            }
+            else
+            {
+                <partial name="_BotonesCrearYRegresar" />
+            }
+        </div>
+    </div>
+</form>
